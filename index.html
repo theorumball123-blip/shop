@@ -48,11 +48,12 @@ body{background:var(--paper);color:var(--ink);font-family:"DM Sans",system-ui,sa
 .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
 .mono{font-family:"Space Mono",ui-monospace,monospace;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase}
 
+.topbar{position:sticky;top:0;z-index:60}
 .notice{display:none;background:var(--ink);color:var(--paper);text-align:center;
   padding:9px 16px;font-family:"Space Mono",monospace;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase}
 .notice.on{display:block}
 .notice b{color:var(--glow)}
-.top{border-bottom:var(--edge);position:sticky;top:0;z-index:50;background:rgba(231,234,236,.92);backdrop-filter:blur(8px)}
+.top{border-bottom:var(--edge);background:rgba(231,234,236,.92);backdrop-filter:blur(8px)}
 .top-in{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 24px;max-width:1080px;margin:0 auto}
 .brand{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:1.05rem;letter-spacing:-.02em}
 .brand span{color:var(--orange)}
@@ -192,7 +193,8 @@ h2{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:clamp(
 .sheet{background:var(--paper);border:var(--edge);max-width:880px;width:100%;
   display:grid;grid-template-columns:1fr 1fr;animation:pop .26s cubic-bezier(.16,.84,.3,1)}
 @keyframes pop{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
-.sheet-shot{background:#CFD5D9;position:relative;min-height:280px}
+.sheet-media{display:flex;flex-direction:column;background:var(--paper-2);min-width:0}
+.sheet-shot{background:#CFD5D9;position:relative;min-height:280px;flex:1}
 .sheet-shot img,.sheet-shot video{width:100%;height:100%;object-fit:cover;display:block}
 .sheet-shot .empty{position:absolute;inset:0;display:flex;align-items:flex-end;padding:16px;color:var(--ink-soft);
   background-image:repeating-linear-gradient(to bottom,rgba(14,20,24,.08) 0 1px,transparent 1px var(--band))}
@@ -210,6 +212,7 @@ h2{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:clamp(
 .chip:hover{border-color:var(--ink)}
 .chip[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
 .sheet-price{font-family:"Space Mono",monospace;font-weight:700;font-size:1.7rem}
+.foot-price{display:none;font-size:1.15rem;font-weight:700;letter-spacing:0;text-transform:none}
 .sheet-foot{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:auto;padding-top:6px}
 .stepper{display:inline-flex;align-items:center;border:var(--edge);background:var(--paper-2)}
 .stepper button{appearance:none;border:none;background:transparent;color:var(--ink);
@@ -220,8 +223,8 @@ h2{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:clamp(
   font-family:"Space Mono",monospace;font-size:.74rem;letter-spacing:.1em;text-transform:uppercase;
   padding:15px 18px;transition:background .16s ease}
 .add-btn:hover{background:var(--orange)}
-.shut{position:absolute;top:0;right:0;z-index:2;appearance:none;border:none;cursor:pointer;
-  background:var(--ink);color:var(--paper);width:42px;height:42px;font-size:1.1rem;line-height:1}
+.shut{position:absolute;top:0;right:0;z-index:9;appearance:none;border:none;cursor:pointer;
+  background:var(--ink);color:var(--paper);width:44px;height:44px;font-size:1.05rem;line-height:1}
 .shut:hover{background:var(--orange)}
 .sheet{position:relative}
 .thumbs{display:flex;gap:8px;padding:10px 26px 0;flex-wrap:wrap}
@@ -239,8 +242,22 @@ h2{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:clamp(
 @media (max-width:700px){ .flick{top:auto;bottom:-19px;transform:none;width:52px;height:38px}
   .flick.prev{left:16px} .flick.next{right:16px} }
 @media (max-width:700px){
-  .sheet{grid-template-columns:1fr}
-  .sheet-shot{aspect-ratio:4/3;min-height:0}
+  .veil{align-items:flex-start;padding:0}
+  .sheet{grid-template-columns:1fr;width:100%;min-height:100%;
+    max-height:none;animation:none}
+  .sheet-media{position:sticky;top:0;z-index:4;background:var(--paper)}
+  .sheet-shot{aspect-ratio:auto;height:38vh;min-height:0}
+  .sheet-shot img,.sheet-shot video{object-fit:contain;background:#CFD5D9}
+  .thumbs{padding:8px 16px;background:var(--paper);border-bottom:var(--edge)}
+  .sheet-body{padding:20px 16px 30px}
+  .shut{position:fixed;top:8px;right:8px;box-shadow:0 2px 10px rgba(14,20,24,.35)}
+  .flick{position:fixed;top:calc(38vh - 22px);bottom:auto;transform:none;
+    width:44px;height:44px;opacity:.92;box-shadow:0 2px 10px rgba(14,20,24,.35)}
+  .flick.prev{left:0}
+  .flick.next{right:0}
+  .sheet-foot{margin-top:6px;gap:10px;align-items:center}
+  .sheet-body .sheet-price{font-size:1.5rem}
+  .add-btn{flex:1}
 }
 .sw{display:flex;align-items:center;gap:10px;border:var(--edge);padding:9px 14px;background:var(--paper-2)}
 .dot{width:17px;height:17px;border-radius:50%;border:1px solid rgba(14,20,24,.25)}
@@ -278,7 +295,20 @@ textarea{min-height:88px;resize:vertical}
 .done{font-family:"Space Mono",monospace;font-size:.95rem;line-height:1.8;padding:14px 0}
 .done b{color:var(--glow)}
 
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:22px}
+.step-item{border-top:2px solid var(--ink);padding-top:14px}
+.step-item .n{font-family:"Space Mono",monospace;font-size:.72rem;letter-spacing:.1em;
+  color:var(--orange);margin-bottom:6px}
+.step-item h4{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:1.1rem;
+  letter-spacing:-.02em;margin-bottom:5px}
+.step-item p{font-size:.93rem;color:var(--ink-soft)}
+.short-note{margin-top:26px;max-width:62ch;color:var(--ink-soft);font-size:.96rem}
+.short-note a{color:var(--ink);font-weight:500}
 footer{padding:44px 0 60px;color:var(--ink-soft)}
+footer .more{display:inline-block;background:var(--ink);color:var(--paper);text-decoration:none;
+  padding:13px 20px;margin-bottom:22px;font-family:"Space Mono",monospace;font-size:.74rem;
+  letter-spacing:.09em;text-transform:uppercase}
+footer .more:hover{background:var(--orange)}
 footer .mono{color:var(--steel)}
 
 @media (max-width:760px){
@@ -297,6 +327,7 @@ footer .mono{color:var(--steel)}
 
 <body>
 
+<div class="topbar">
 <div class="notice" id="notice"></div>
 <header class="top">
   <div class="top-in">
@@ -307,6 +338,7 @@ footer .mono{color:var(--steel)}
     </div>
   </div>
 </header>
+</div>
 
 <section class="hero layers">
   <div class="wrap">
@@ -335,54 +367,11 @@ footer .mono{color:var(--steel)}
   </div>
 </section>
 
-<section class="sec">
-  <div class="wrap">
-    <div class="sec-head"><h2>How it works</h2><div class="mono">No money changes hands online</div></div>
-    <div class="steps">
-      <div class="step-item"><div class="n">01</div><h4>Pick your stuff</h4>
-        <p>Tap anything to see it bigger, choose a colour, add it to your order.</p></div>
-      <div class="step-item"><div class="n">02</div><h4>Send the order</h4>
-        <p>Fill in your name and email and press Place order. You get an invoice straight away.</p></div>
-      <div class="step-item"><div class="n">03</div><h4>I print it</h4>
-        <p>Usually two to four days. Big ones take longer — the 10×10 is a full day on the printer.</p></div>
-      <div class="step-item"><div class="n">04</div><h4>You get it</h4>
-        <p>Free at school, or delivered around Christchurch. Pay when it reaches you.</p></div>
-    </div>
-  </div>
-</section>
 
-<section class="sec">
-  <div class="wrap">
-    <div class="sec-head"><h2>Who makes this</h2><div class="mono">Sumner, Christchurch</div></div>
-    <div class="about">
-      <p>Everything here is printed by me, at home, on one Ender 3 V3 SE. I started selling
-         these at school and people kept asking for more, so I built this to keep track.</p>
-      <p>Each one comes off the printer as a single piece with the joints already inside it,
-         then I work every joint loose by hand before it goes out — that bit isn't automated,
-         it's just me sitting there flexing them until they run smoothly.</p>
-      <p>Because they're printed one at a time in whatever colour you pick, no two come out
-         quite the same. The rainbow and tri-colour ones especially.</p>
-    </div>
-  </div>
-</section>
 
-<section class="sec">
-  <div class="wrap">
-    <div class="sec-head"><h2>Questions</h2><div class="mono">The ones I get asked most</div></div>
-    <div class="faq">
-      <details><summary>How long does it take?</summary>
-        <p>Small things are two to four days. The 10×10 slime is a full day on the printer by itself, so give me a week for that one.</p></details>
-      <details><summary>Can I pick the colour?</summary>
-        <p>Yes — red, rainbow, tri-colour or blue glow-in-the-dark. Rainbow and tri-colour shift along the length of the print, so every one comes out different.</p></details>
-      <details><summary>Will it already move?</summary>
-        <p>Yes. Everything prints in one piece with the joints built in, and I work each one loose by hand before you get it. No glue, no assembly.</p></details>
-      <details><summary>What if it breaks?</summary>
-        <p>Tell me. These are plastic and the thin bits can snap if you really go at them — if one fails in normal use I'll reprint it.</p></details>
-      <details><summary>Can you print something I found online?</summary>
-        <p>Often, yes. Send me the link and I'll tell you if it'll work on my printer and what it'd cost.</p></details>
-    </div>
-  </div>
-</section>
+
+
+
 
 <div class="cart-veil" id="cartVeil"></div>
 <aside class="drawer" id="cart" role="dialog" aria-modal="true" aria-label="Your order">
@@ -441,8 +430,11 @@ footer .mono{color:var(--steel)}
 
 <div class="veil" id="veil" role="dialog" aria-modal="true" aria-labelledby="sheetName">
   <div class="sheet">
-    <div class="sheet-shot" id="sheetShot"></div>
-    <div class="thumbs" id="sheetThumbs"></div>
+    <button class="shut" id="sheetShut" aria-label="Close">&#10005;</button>
+    <div class="sheet-media">
+      <div class="sheet-shot" id="sheetShot"></div>
+      <div class="thumbs" id="sheetThumbs"></div>
+    </div>
     <button class="flick prev" id="sheetPrev" aria-label="Previous item">&#8249;</button>
     <button class="flick next" id="sheetNext" aria-label="Next item">&#8250;</button>
     <div class="sheet-body">
@@ -457,6 +449,7 @@ footer .mono{color:var(--steel)}
       <div class="sheet-price" id="sheetPrice"></div>
       <div class="mono" id="sheetEta" style="color:var(--ink-soft);margin-top:-6px"></div>
       <div class="sheet-foot">
+        <span class="foot-price mono" id="sheetFootPrice"></span>
         <span class="stepper">
           <button id="sheetMinus" aria-label="Fewer">&minus;</button>
           <b id="sheetQty">1</b>
@@ -474,8 +467,25 @@ footer .mono{color:var(--steel)}
   <span class="tb-go">View \u2192</span>
 </a>
 
+<section class="sec" id="short">
+  <div class="wrap">
+    <div class="sec-head"><h2>How it works</h2><div class="mono">The short version</div></div>
+    <div class="steps">
+      <div class="step-item"><div class="n">01</div><h4>You order</h4>
+        <p>Pick what you want, add your name, press Place order. Nothing to pay on the website.</p></div>
+      <div class="step-item"><div class="n">02</div><h4>I print it</h4>
+        <p>Two to four days for most things, about a week for the big 10×10.</p></div>
+      <div class="step-item"><div class="n">03</div><h4>You pay on collection</h4>
+        <p>Free at school, or delivered from $3 around Sumner. Cash or transfer when it reaches you.</p></div>
+    </div>
+    <p class="short-note">Everything is printed by me at home in Sumner on one Ender 3 V3 SE, one at a time,
+       in whatever colour you pick. <a href="about.html">Full details, delivery prices and questions &#8250;</a></p>
+  </div>
+</section>
+
 <footer>
   <div class="wrap">
+    <a class="more" href="about.html">How it works, delivery prices &amp; who makes this &#8250;</a>
     <div class="mono" style="margin-bottom:10px">Made on an Ender 3 V3 SE</div>
     <p id="footContact"></p>
   </div>
@@ -507,7 +517,13 @@ const SHOP = {
 
   // One line of news across the top of the site. Leave "" to hide it.
   // e.g. "Sold out for now \u2014 printing more this week"  or  "Now doing custom prints"
-  notice:    "Limited stock - No articulated dragon or 3x3 slime fidget available. Thank You.",
+  notice:    "",
+
+  // Out of stock: put the exact product names in this list, in quotes,
+  // separated by commas. They show "Sold out" and can't be ordered.
+  // An empty list means everything is available.
+  //   soldOut: ["Blanket fidget", "Clicker"],
+  soldOut:   [],
 
   name:      "First Layer",
   nameBold:  "Prints",
@@ -671,6 +687,14 @@ try {
 } catch(e){}
 
 if (SHOP.notice){ $("notice").textContent = SHOP.notice; $("notice").classList.add("on"); }
+
+/* anything named in SHOP.soldOut is marked out of stock */
+(function applySoldOut(){
+  const out = (SHOP.soldOut || []).map(s => String(s).trim().toLowerCase());
+  SHOP.products.forEach(p => {
+    if (out.includes(p.name.trim().toLowerCase())) p.sold = true;
+  });
+})();
 $("brandName").innerHTML = SHOP.name + ' <span>' + SHOP.nameBold + '</span>';
 $("heroKicker").textContent = SHOP.kicker;
 $("footContact").textContent = SHOP.findMe;
@@ -839,8 +863,7 @@ function openSheet(i){
   const media = p.video
     ? `<video src="${p.video}" ${src?`poster="${src}"`:""} autoplay muted loop playsinline></video>`
     : (src ? `<img src="${src}" alt="${p.name}">` : `<div class="empty mono">Photo coming</div>`);
-  $("sheetShot").innerHTML = media + `<button class="shut" aria-label="Close">\u2715</button>`;
-  $("sheetShot").querySelector(".shut").addEventListener("click", closeSheet);
+  $("sheetShot").innerHTML = media;
   $("sheetName").textContent  = p.name;
   $("sheetSpec").textContent  = p.spec;
   $("sheetBlurb").textContent = p.blurb;
@@ -862,7 +885,9 @@ function closeSheet(){
 }
 function paintSheetPrice(){
   const p = SHOP.products[sheetI];
-  $("sheetPrice").textContent = p.price > 0 ? money(p.price * sheetQty) : "Ask me";
+  const txt = p.price > 0 ? money(p.price * sheetQty) : "Ask me";
+  $("sheetPrice").textContent = txt;
+  $("sheetFootPrice").textContent = txt;
 }
 
 grid.addEventListener("click", e => {
@@ -894,10 +919,7 @@ function paintThumbs(p){
        <img src="${PHOTOS[k]||""}" alt=""></button>`).join("");
   box.querySelectorAll("button").forEach(btn => btn.addEventListener("click", e => {
     e.stopPropagation();
-    $("sheetShot").innerHTML =
-      `<img src="${PHOTOS[btn.dataset.k]}" alt="">` +
-      `<button class="shut" aria-label="Close">\u2715</button>`;
-    $("sheetShot").querySelector(".shut").addEventListener("click", closeSheet);
+    $("sheetShot").innerHTML = `<img src="${PHOTOS[btn.dataset.k]}" alt="">`;
     box.querySelectorAll("button").forEach(x => x.classList.toggle("on", x === btn));
   }));
 }
@@ -910,6 +932,7 @@ function flick(step){
     if (!SHOP.products[i].sold){ openSheet(i); return; }
   }
 }
+$("sheetShut").addEventListener("click", e => { e.stopPropagation(); closeSheet(); });
 $("sheetPrev").addEventListener("click", e => { e.stopPropagation(); flick(-1); });
 $("sheetNext").addEventListener("click", e => { e.stopPropagation(); flick(1); });
 

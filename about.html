@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How it works — First Layer Prints</title>
+<meta name="description" content="How ordering works at First Layer Prints, who makes everything, delivery prices around Christchurch and New Zealand, and answers to common questions.">
+<meta name="theme-color" content="#E7EAEC">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="How it works — First Layer Prints">
+<meta property="og:description" content="How ordering works, who makes everything, and what delivery costs.">
+<meta property="og:image" content="https://theorumball123-blip.github.io/shop/og-image.jpg">
+<meta property="og:url" content="https://theorumball123-blip.github.io/shop/about.html">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,700;12..96,800&family=DM+Sans:wght@400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --paper:#E7EAEC; --paper-2:#DCE0E3; --ink:#0E1418; --ink-soft:#5A666E;
+  --orange:#FF4D12; --glow:#CDFF47; --steel:#9AA5AD;
+  --edge:1px solid #C4CBD0;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:"DM Sans",system-ui,sans-serif;
+  font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1180px;margin:0 auto;padding:0 26px}
+.mono{font-family:"Space Mono",monospace;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase}
+
+/* header */
+.top{border-bottom:var(--edge);position:sticky;top:0;background:var(--paper);z-index:50}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 26px}
+.brand{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:1.25rem;
+  letter-spacing:-.03em;text-decoration:none;color:var(--ink)}
+.brand span{color:var(--orange)}
+.back{background:var(--ink);color:var(--paper);padding:7px 13px;text-decoration:none}
+
+/* hero */
+.hero{border-bottom:var(--edge);padding:56px 0 46px}
+.hero h1{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;letter-spacing:-.04em;
+  font-size:clamp(2.2rem,6vw,4rem);line-height:.98;margin-bottom:14px}
+.hero p{max-width:56ch;color:var(--ink-soft);font-size:1.08rem}
+.rule{height:4px;background:var(--orange);width:74px;margin-bottom:22px}
+
+/* sections */
+.sec{border-bottom:var(--edge);padding:46px 0}
+.sec-head{display:flex;align-items:baseline;justify-content:space-between;gap:16px;
+  flex-wrap:wrap;margin-bottom:26px}
+.sec h2{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;letter-spacing:-.03em;
+  font-size:clamp(1.5rem,3.4vw,2.1rem)}
+.sec-head .mono{color:var(--ink-soft)}
+
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:22px}
+.step-item{border-top:2px solid var(--ink);padding-top:14px}
+.step-item .n{font-family:"Space Mono",monospace;font-size:.72rem;letter-spacing:.1em;
+  color:var(--orange);margin-bottom:6px}
+.step-item h3{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:1.12rem;
+  letter-spacing:-.02em;margin-bottom:5px}
+.step-item p{font-size:.94rem;color:var(--ink-soft)}
+
+.about{max-width:62ch;display:flex;flex-direction:column;gap:16px}
+.about p{color:var(--ink-soft);font-size:1.02rem}
+.about p:first-child{color:var(--ink);font-size:1.15rem}
+
+table{border-collapse:collapse;width:100%;max-width:560px}
+th,td{text-align:left;padding:11px 12px;border-bottom:1px solid #C4CBD0;font-size:.96rem}
+th{font-family:"Space Mono",monospace;font-size:.68rem;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--ink-soft)}
+td:last-child{text-align:right;font-family:"Space Mono",monospace;font-weight:700}
+.tbl-note{margin-top:14px;color:var(--ink-soft);font-size:.9rem;max-width:56ch}
+
+.faq{display:flex;flex-direction:column;gap:2px;max-width:720px}
+.faq details{border-bottom:var(--edge)}
+.faq summary{cursor:pointer;padding:15px 0;font-weight:500;list-style:none;
+  display:flex;justify-content:space-between;align-items:center;gap:16px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font-family:"Space Mono",monospace;color:var(--orange);font-size:1.2rem}
+.faq details[open] summary::after{content:"\2212"}
+.faq p{padding:0 0 16px;color:var(--ink-soft);font-size:.95rem;max-width:60ch}
+
+.cta{padding:48px 0;text-align:center}
+.cta a{display:inline-block;background:var(--glow);color:var(--ink);text-decoration:none;
+  padding:15px 28px;font-family:"Space Mono",monospace;font-size:.8rem;
+  letter-spacing:.1em;text-transform:uppercase;font-weight:700}
+.cta a:hover{background:var(--orange);color:var(--paper)}
+
+footer{border-top:var(--edge);background:var(--paper-2);padding:34px 0 44px;color:var(--ink-soft)}
+footer .mono{color:var(--ink-soft)}
+footer a{color:var(--ink)}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="index.html">First <span>Layer</span> Prints</a>
+    <a class="back mono" href="index.html">&#8249; Back to the shop</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="rule"></div>
+    <h1>How all<br>this works</h1>
+    <p>Everything here is 3D printed to order, one at a time, in Sumner. Nothing is
+       bought in and resold. This page covers how to order, what delivery costs, and
+       who's actually making the thing.</p>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap">
+    <div class="sec-head"><h2>Ordering, step by step</h2><div class="mono">No money changes hands online</div></div>
+    <div class="steps">
+      <div class="step-item"><div class="n">01</div><h3>Pick your stuff</h3>
+        <p>Tap anything in the shop to see it bigger, choose a colour, and add it to your order.
+           You can put as many things in as you like.</p></div>
+      <div class="step-item"><div class="n">02</div><h3>Send the order</h3>
+        <p>Fill in your name and email and press Place order. You get an invoice number
+           straight away, and the order lands in my inbox.</p></div>
+      <div class="step-item"><div class="n">03</div><h3>I print it</h3>
+        <p>Usually two to four days. Big things take longer &mdash; the 10&times;10 slime is a
+           full day on the printer by itself, so give me a week for that one.</p></div>
+      <div class="step-item"><div class="n">04</div><h3>You get it</h3>
+        <p>Free if you're at school &mdash; I'll find you. Otherwise I'll deliver it, or post it.
+           You pay when it reaches you, in cash or by transfer.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap">
+    <div class="sec-head"><h2>Delivery</h2><div class="mono">Worked out from your address</div></div>
+    <table>
+      <tr><th>Where</th><th>Cost</th></tr>
+      <tr><td>Pick up at school</td><td>Free</td></tr>
+      <tr><td>Sumner</td><td>$3</td></tr>
+      <tr><td>Up to Ferrymead</td><td>$5</td></tr>
+      <tr><td>Rest of Christchurch</td><td>$9</td></tr>
+      <tr><td>Rest of New Zealand</td><td>$15</td></tr>
+      <tr><td>Australia &amp; the Pacific</td><td>$40</td></tr>
+      <tr><td>Rest of the world</td><td>$100</td></tr>
+    </table>
+    <p class="tbl-note">The shop works the price out as you type your address, so you'll see it
+       before you order. If your address doesn't match anything it knows, it charges the highest
+       rate &mdash; message me and I'll fix it.</p>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap">
+    <div class="sec-head"><h2>The colours</h2><div class="mono">Four to choose from</div></div>
+    <div class="about">
+      <p>Every product comes in any of these. The price is the same whichever you pick.</p>
+    </div>
+    <table style="margin-top:20px">
+      <tr><th>Colour</th><th>What it's like</th></tr>
+      <tr><td>Red</td><td style="text-align:left;font-family:inherit;font-weight:400">Solid and bright. The safe choice.</td></tr>
+      <tr><td>Rainbow</td><td style="text-align:left;font-family:inherit;font-weight:400">Shifts through the spectrum along the print &mdash; every one is different.</td></tr>
+      <tr><td>Tri-colour</td><td style="text-align:left;font-family:inherit;font-weight:400">Three colours blending into each other. Best on the bigger items.</td></tr>
+      <tr><td>Blue glow in the dark</td><td style="text-align:left;font-family:inherit;font-weight:400">Pale blue in daylight, glows green after a few minutes under a light.</td></tr>
+    </table>
+    <p class="tbl-note">Rainbow and tri-colour change colour gradually as the print goes up, so a tall
+       thing like the 10&times;10 slime shows the whole range, while something flat shows less of it.</p>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap">
+    <div class="sec-head"><h2>How the printing works</h2><div class="mono">If you're curious</div></div>
+    <div class="about">
+      <p>A 3D printer builds things up in layers, each one about a tenth of a millimetre thick.
+         A 3&times;3 slime is around two hundred layers. The 10&times;10 is closer to two hundred
+         as well, but each layer is far bigger, which is why it takes a whole day.</p>
+      <p>The clever bit is printing the joints in place. Instead of printing parts and gluing
+         them, the whole thing comes out as one object with tiny gaps left inside it &mdash; about
+         a quarter of a millimetre &mdash; so the pieces are already loose when it comes off the
+         bed. Get the gap wrong by a tenth of a millimetre and the whole thing welds solid.</p>
+      <p>That's also why they need working loose by hand. The first few movements break any
+         last stringy bits between the parts, and after thirty or forty goes they run smoothly.
+         I do that before anything goes out.</p>
+    </div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap">
+    <div class="sec-head"><h2>Looking after it</h2><div class="mono">These are plastic</div></div>
+    <div class="about">
+      <p>They're tougher than they look, but not indestructible. A few things worth knowing:</p>
+      <p>Don't leave them in a hot car or on a sunny windowsill &mdash; the plastic softens
+         around 60&nbsp;&deg;C and things can sag out of shape. Wash with cold water and soap if
+         they get grubby, not hot water. And the thin bits &mdash; dragon tails, the bike's
+         handlebars &mdash; will snap if you bend them hard enough. If something breaks in
+         normal use, tell me and I'll reprint it.</p>
+    </div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap">
+    <div class="sec-head"><h2>Who makes this</h2><div class="mono">Sumner, Christchurch</div></div>
+    <div class="about">
+      <p>Everything here is printed by me, at home, on one Ender 3 V3 SE. I started selling
+         these at school and people kept asking for more, so I built this to keep track.</p>
+      <p>Most things come off the printer as a single piece with the joints already inside
+         them, then I work every joint loose by hand before it goes out &mdash; that bit isn't
+         automated, it's just me sitting there flexing them until they run smoothly. A few
+         things, like the mini e-dirt bike, print in parts and get assembled instead.</p>
+      <p>Because they're printed one at a time in whatever colour you pick, no two come out
+         quite the same. The rainbow and tri-colour ones especially &mdash; the colour shifts
+         along the print, so yours won't look like anyone else's.</p>
+    </div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap">
+    <div class="sec-head"><h2>Questions</h2><div class="mono">The ones I get asked most</div></div>
+    <div class="faq">
+      <details><summary>How long does it take?</summary>
+        <p>Small things are two to four days. The 10&times;10 slime is a full day of printing on
+           its own, so allow about a week. Each product page says how long that one takes.</p></details>
+      <details><summary>Can I pick the colour?</summary>
+        <p>Yes &mdash; red, rainbow, tri-colour, or blue glow-in-the-dark. Rainbow and tri-colour
+           shift along the length of the print, so every one is different.</p></details>
+      <details><summary>Will it already move?</summary>
+        <p>Yes. Most things print in one piece with the joints built in, and I work each one
+           loose by hand before you get it. No glue, no assembly at your end.</p></details>
+      <details><summary>What if it breaks?</summary>
+        <p>Tell me. These are plastic and the thin parts can snap if you really go at them &mdash;
+           if one fails in normal use I'll reprint it.</p></details>
+      <details><summary>Can you print something I found online?</summary>
+        <p>Often, yes. Send me the link and I'll tell you whether it'll work on my printer and
+           what it'd cost. There's a box for the link in the order form.</p></details>
+      <details><summary>Can you do a custom colour?</summary>
+        <p>Only the four listed &mdash; those are the filaments I have. If you want something
+           specific, ask and I'll tell you whether it's worth me buying a roll.</p></details>
+      <details><summary>Do you do big orders?</summary>
+        <p>Yes, but tell me early. Ten blanket fidgets is most of a day on the printer, so I
+           need more notice than for one.</p></details>
+      <details><summary>How do I pay?</summary>
+        <p>When you get it, not before. Cash or bank transfer. Nothing goes through the website,
+           so you're not typing card details anywhere.</p></details>
+      <details><summary>Why is one side of the bike rougher?</summary>
+        <p>It's printed in parts and assembled, and one side ends up tidier than the other.
+           The second photo on its page shows the rougher side, so you know what you're
+           getting.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="wrap">
+    <a href="index.html">Back to the shop &#8250;</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="mono" style="margin-bottom:10px">Made on an Ender 3 V3 SE</div>
+    <p>First Layer Prints &mdash; 3D printed fidgets, made to order in Sumner, Christchurch.
+       <a href="index.html">See what's for sale</a>.</p>
+  </div>
+</footer>
+
+</body>
+</html>
