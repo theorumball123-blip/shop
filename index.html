@@ -131,24 +131,48 @@ h2{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:clamp(
 .faq p{padding:0 0 16px;color:var(--ink-soft);font-size:.95rem;max-width:60ch}
 .custom .shot{background:var(--paper-2)}
 .custom .empty{background-image:none}
-.cart-veil{position:fixed;inset:0;z-index:150;background:rgba(14,20,24,.55);
-  backdrop-filter:blur(2px);opacity:0;pointer-events:none;transition:opacity .25s}
-.cart-veil.on{opacity:1;pointer-events:auto}
-.drawer{position:fixed;top:0;right:0;bottom:0;z-index:160;width:min(440px,100%);
-  background:var(--paper);border-left:var(--edge);display:flex;flex-direction:column;
-  transform:translateX(101%);transition:transform .28s cubic-bezier(.16,.84,.3,1)}
-.drawer.on{transform:none}
-.drawer-head{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;
-  padding:20px 22px 16px;border-bottom:var(--edge)}
+.drawer{position:fixed;inset:0;z-index:160;background:var(--paper);
+  display:flex;flex-direction:column;overflow:hidden;
+  opacity:0;pointer-events:none;transform:translateY(14px);
+  transition:opacity .22s ease,transform .26s cubic-bezier(.16,.84,.3,1)}
+.drawer.on{opacity:1;pointer-events:auto;transform:none}
+.drawer-head{display:flex;align-items:center;justify-content:space-between;gap:14px;
+  padding:16px 26px;border-bottom:var(--edge);background:var(--paper);flex:none}
+.drawer-head .wrapin{max-width:1100px;margin:0 auto;width:100%;display:flex;
+  align-items:center;justify-content:space-between;gap:14px}
 .drawer-title{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;
   font-size:1.4rem;letter-spacing:-.03em}
+.back-btn{appearance:none;border:var(--edge);background:transparent;color:var(--ink);
+  padding:9px 14px;cursor:pointer;font-family:"Space Mono",monospace;font-size:.72rem;
+  letter-spacing:.09em;text-transform:uppercase}
+.back-btn:hover{background:var(--ink);color:var(--paper);border-color:var(--ink)}
 .drawer-shut{appearance:none;border:none;background:var(--ink);color:var(--paper);
   width:34px;height:34px;cursor:pointer;font-size:.9rem;flex:none}
 .drawer-shut:hover{background:var(--orange)}
-.drawer-body{flex:1;overflow-y:auto;padding:20px 22px;display:flex;flex-direction:column;gap:22px}
+.drawer-body{flex:1;overflow-y:auto;padding:30px 26px 40px}
+.drawer-inner{max-width:1100px;margin:0 auto;display:grid;
+  grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:34px;align-items:start}
+.co-col{display:flex;flex-direction:column;gap:20px;min-width:0}
+.co-h{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;letter-spacing:-.03em;
+  font-size:1.22rem;margin-bottom:2px}
+.co-panel{border:var(--edge);padding:20px}
+.co-panel h4{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:1.02rem;
+  letter-spacing:-.02em;margin-bottom:10px}
+.co-panel p{font-size:.92rem;color:var(--ink-soft);margin-bottom:9px}
+.co-panel p:last-child{margin-bottom:0}
+.co-panel a{color:var(--ink)}
+.co-zones{width:100%;border-collapse:collapse;margin-top:4px}
+.co-zones td{padding:6px 0;font-size:.88rem;color:var(--ink-soft);border-bottom:1px solid #D3D8DC}
+.co-zones td:last-child{text-align:right;font-family:"Space Mono",monospace;color:var(--ink)}
+@media (max-width:860px){
+  .drawer-inner{grid-template-columns:1fr;gap:26px}
+  .drawer-body{padding:22px 18px 40px}
+  .drawer-head{padding:14px 18px}
+}
 .drawer-body .slip{position:static;padding:18px}
 .drawer-form label{margin-bottom:14px}
-.drawer-foot{border-top:var(--edge);padding:16px 22px 20px;background:var(--paper-2)}
+.drawer-foot{border-top:var(--edge);padding:16px 26px 20px;background:var(--paper-2);flex:none}
+.drawer-foot .inwrap{max-width:1100px;margin:0 auto}
 .drawer-foot .actions{margin-top:0}
 .drawer-foot .btn-ghost{color:var(--ink);border-color:#B7BEC4}
 .drawer-foot .note{color:var(--ink-soft)}
@@ -272,8 +296,14 @@ textarea{min-height:88px;resize:vertical}
 .slip{background:var(--ink);color:var(--paper);padding:22px;position:sticky;top:86px}
 .slip h3{font-family:"Space Mono",monospace;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--steel);margin-bottom:14px}
 .slip-empty{font-family:"Space Mono",monospace;font-size:.88rem;color:var(--steel);padding:18px 0 6px}
-.line{display:grid;grid-template-columns:1fr auto;gap:6px 12px;padding:13px 0;border-bottom:1px solid rgba(255,255,255,.14)}
+.line{display:grid;grid-template-columns:auto 1fr auto;gap:6px 12px;padding:13px 0;border-bottom:1px solid rgba(255,255,255,.14)}
 .line-name{font-family:"Bricolage Grotesque",sans-serif;font-weight:600;font-size:1rem;letter-spacing:-.01em}
+.line-pic{width:44px;height:44px;object-fit:cover;align-self:start;grid-row:span 2}
+.line-sub{display:block;font-family:"Space Mono",monospace;font-size:.6rem;
+  letter-spacing:.06em;text-transform:uppercase;color:var(--steel);margin-top:3px;font-weight:400}
+.slip-summary{color:var(--steel);padding-top:10px;margin-top:2px;
+  border-top:1px solid rgba(255,255,255,.14)}
+.slip-summary:empty{display:none}
 .line-price{font-family:"Space Mono",monospace;font-size:.92rem;align-self:start;text-align:right}
 .line-ctrl{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
 .line select{width:auto;background:transparent;color:var(--paper);border:1px solid rgba(255,255,255,.28);padding:5px 8px;font-size:.82rem}
@@ -373,59 +403,114 @@ footer .mono{color:var(--steel)}
 
 
 
-<div class="cart-veil" id="cartVeil"></div>
 <aside class="drawer" id="cart" role="dialog" aria-modal="true" aria-label="Your order">
   <div class="drawer-head">
-    <div>
-      <h3 class="drawer-title">Your order</h3>
-      <div class="mono" style="color:var(--ink-soft)">Pay when you collect</div>
+    <div class="wrapin">
+      <button class="back-btn mono" id="cartBack">&#8249; Keep shopping</button>
+      <div style="text-align:right">
+        <h3 class="drawer-title">Your order</h3>
+        <div class="mono" style="color:var(--ink-soft)">Pay when you collect</div>
+      </div>
     </div>
-    <button class="drawer-shut" id="cartClose" aria-label="Close">&#10005;</button>
   </div>
 
   <div class="drawer-body">
-    <div class="slip">
-      <h3>Order slip</h3>
-      <div id="lines"></div>
-      <div class="ship-row" id="shipRow" style="display:none"><span id="shipLabel">Delivery</span><span id="shipCost"></span></div>
-      <div class="slip-total"><span>Total</span><span id="total">$0.00</span></div>
-    </div>
+    <div class="drawer-inner">
 
-    <div class="drawer-form">
-      <label>
-        <span class="mono">Your name</span>
-        <input id="fName" type="text" placeholder="First name is fine" autocomplete="off">
-      </label>
-      <div class="ways" id="ways"></div>
-      <label id="addrField" style="display:none">
-        <span class="mono">Delivery address</span>
-        <textarea id="fAddr" placeholder="Street and suburb — e.g. 12 Wakefield Ave, Sumner"></textarea>
-      </label>
-      <div class="zone-hint" id="zoneHint" style="display:none"></div>
-      <label id="emailField" style="display:none">
-        <span class="mono">Your email — so you get a copy</span>
-        <input id="fEmail" type="email" placeholder="you@example.com" autocomplete="off">
-      </label>
-      <label>
-        <span class="mono">Anything else</span>
-        <textarea id="fNotes" placeholder="When you need it by, colour requests, questions"></textarea>
-      </label>
-      <label>
-        <span class="mono">Link to a model \u2014 only if you want something custom</span>
-        <input id="fLink" type="url" placeholder="Paste a MakerWorld or Printables link" autocomplete="off">
-      </label>
-      <div class="swatches" id="swatches" aria-label="Available colours"></div>
-      <div id="history" style="display:none"></div>
+      <div class="co-col">
+        <div>
+          <div class="co-h">Your details</div>
+          <div class="drawer-form">
+            <label>
+              <span class="mono">Your name</span>
+              <input id="fName" type="text" placeholder="First name is fine" autocomplete="off">
+            </label>
+            <div class="ways" id="ways"></div>
+            <label id="addrField" style="display:none">
+              <span class="mono">Delivery address</span>
+              <textarea id="fAddr" placeholder="Street and suburb \u2014 e.g. 12 Wakefield Ave, Sumner"></textarea>
+            </label>
+            <div class="zone-hint" id="zoneHint" style="display:none"></div>
+            <label id="emailField" style="display:none">
+              <span class="mono">Your email \u2014 so you get a copy</span>
+              <input id="fEmail" type="email" placeholder="you@example.com" autocomplete="off">
+            </label>
+            <label>
+              <span class="mono">Anything else</span>
+              <textarea id="fNotes" placeholder="When you need it by, colour requests, questions"></textarea>
+            </label>
+            <label>
+              <span class="mono">Link to a model \u2014 only if you want something custom</span>
+              <input id="fLink" type="url" placeholder="Paste a MakerWorld or Printables link" autocomplete="off">
+            </label>
+          </div>
+        </div>
+
+        <div class="co-panel">
+          <h4>What happens after you press the button</h4>
+          <p>Your order comes straight to me and you get an invoice number on screen. I'll message
+             you to confirm I can do it, then print it \u2014 usually two to four days, about a week
+             for the 10\u00d710.</p>
+          <p>You pay when it reaches you, in cash or by bank transfer. Nothing is charged here and
+             there's no card form anywhere on this site.</p>
+        </div>
+
+        <div class="co-panel">
+          <h4>Delivery prices</h4>
+          <table class="co-zones">
+            <tr><td>Pick up at school</td><td>Free</td></tr>
+            <tr><td>Sumner</td><td>$3</td></tr>
+            <tr><td>Up to Ferrymead</td><td>$5</td></tr>
+            <tr><td>Rest of Christchurch</td><td>$9</td></tr>
+            <tr><td>Rest of New Zealand</td><td>$15</td></tr>
+            <tr><td>Australia &amp; the Pacific</td><td>$40</td></tr>
+            <tr><td>Rest of the world</td><td>$100</td></tr>
+          </table>
+          <p style="margin-top:11px">Worked out from your address as you type it.</p>
+        </div>
+
+        <div class="co-panel">
+          <h4>If something's wrong</h4>
+          <p>Arrives broken, or breaks in normal use? Tell me and I'll reprint it free. Because
+             everything is made to order there's no change-of-mind returns, but you can cancel
+             any time before I start printing.</p>
+          <p><a href="terms.html">Full terms &amp; conditions &#8250;</a> &nbsp;&middot;&nbsp;
+             <a href="about.html">How it all works &#8250;</a></p>
+        </div>
+
+        <div class="swatches" id="swatches" aria-label="Available colours"></div>
+        <div id="history" style="display:none"></div>
+      </div>
+
+      <div class="co-col">
+        <div class="slip">
+          <h3>Order slip</h3>
+          <div id="lines"></div>
+          <div class="ship-row" id="shipRow" style="display:none"><span id="shipLabel">Delivery</span><span id="shipCost"></span></div>
+          <div class="slip-total"><span>Total</span><span id="total">$0.00</span></div>
+          <div class="slip-summary mono" id="slipSummary"></div>
+        </div>
+        <div class="co-panel" style="border-color:var(--ink)">
+          <h4>Made by hand, one at a time</h4>
+          <p>Every joint is worked loose by me before it goes out, and nothing is printed until
+             you order it \u2014 which is why yours comes in the colour you picked and why no two
+             look quite the same.</p>
+        </div>
+      </div>
+
     </div>
   </div>
 
   <div class="drawer-foot">
-    <div class="actions">
-      <button class="btn btn-glow" id="btnSend">Place order</button>
-      <button class="btn btn-ghost" id="btnCopy">Copy order</button>
+    <div class="inwrap">
+      <div class="actions">
+        <button class="btn btn-glow" id="btnSend">Place order</button>
+        <button class="btn btn-ghost" id="btnCopy">Copy order</button>
+      </div>
+      <p class="note" id="slipNote"></p>
     </div>
-    <p class="note" id="slipNote"></p>
   </div>
+
 </aside>
 
 <div class="veil" id="veil" role="dialog" aria-modal="true" aria-labelledby="sheetName">
@@ -518,14 +603,13 @@ const SHOP = {
 
   // One line of news across the top of the site. Leave "" to hide it.
   // e.g. "Sold out for now \u2014 printing more this week"  or  "Now doing custom prints"
-  notice:    "Limited stock - No Articulated dragon or 3x3 slime fidgets available. Thank You.",
+  notice:    "",
 
   // Out of stock: put the exact product names in this list, in quotes,
   // separated by commas. They show "Sold out" and can't be ordered.
   // An empty list means everything is available.
   //   soldOut: ["Blanket fidget", "Clicker"],
-  soldOut:   ["Slime fidget — 3×3", "Articulated dragon"
-],
+  soldOut:   [],
 
   name:      "First Layer",
   nameBold:  "Prints",
@@ -971,8 +1055,13 @@ var render = function render(){
     const p = SHOP.products[l.i];
     const row = document.createElement("div");
     row.className = "line";
+    const thumb = PHOTOS[p.photo] ? `<img class="line-pic" src="${PHOTOS[p.photo]}" alt="">` : "";
     row.innerHTML = `
-      <div class="line-name">${p.name}</div>
+      ${thumb}
+      <div class="line-name">${p.name}
+        <span class="line-sub">${p.spec || ""}${p.price>0 ? " &middot; " + money(p.price) + " each" : ""}</span>
+        <span class="line-sub">Ready in ${p.eta || "2\u20134 days"}</span>
+      </div>
       <div class="line-price">${p.price>0?money(p.price*l.qty):"ask"}</div>
       <div class="line-ctrl">
         <span class="step">
@@ -987,6 +1076,15 @@ var render = function render(){
       <button class="rm" data-a="rm" data-x="${idx}" aria-label="Remove">✕</button>`;
     box.appendChild(row);
   });
+  const items = cart.reduce((s,l)=>s+l.qty, 0);
+  const slowest = cart.reduce((w,l) => {
+    const e = SHOP.products[l.i].eta || "2\u20134 days";
+    return e.indexOf("week") >= 0 ? e : w;
+  }, cart.length ? "2\u20134 days" : "");
+  $("slipSummary").innerHTML = cart.length
+    ? `${items} item${items>1?"s":""} &middot; ready in ${slowest}` + (deliver ? "" : " &middot; free at school")
+    : "";
+
   const sum = cart.reduce((s,l)=>s + SHOP.products[l.i].price*l.qty, 0) + shipCost();
   const anyAsk = cart.some(l => SHOP.products[l.i].price===0);
   $("shipRow").style.display = (cart.length && shipCost() > 0) ? "flex" : "none";
@@ -1272,12 +1370,10 @@ let cartOpener = null;
 function openCart(){
   cartOpener = document.activeElement;
   $("cart").classList.add("on");
-  $("cartVeil").classList.add("on");
   document.body.style.overflow = "hidden";
 }
 function closeCart(){
   $("cart").classList.remove("on");
-  $("cartVeil").classList.remove("on");
   document.body.style.overflow = "";
   if (cartOpener && cartOpener.focus) cartOpener.focus();
 }
@@ -1290,8 +1386,8 @@ document.addEventListener("keydown", e => {
   if (e.shiftKey && document.activeElement === first){ e.preventDefault(); last.focus(); }
   else if (!e.shiftKey && document.activeElement === last){ e.preventDefault(); first.focus(); }
 });
-$("cartClose").addEventListener("click", closeCart);
-$("cartVeil").addEventListener("click", closeCart);
+$("cartBack").addEventListener("click", closeCart);
+
 document.querySelectorAll('[href="#order"]').forEach(a =>
   a.addEventListener("click", e => { e.preventDefault(); openCart(); }));
 
